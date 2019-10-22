@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>FredSystems.</title>
+
+</head>
+<centre>
+<!--th:object="${user}"-->
+<form action="#" th:action="@{/registerUser}" th:object="${user}"  method="post" >
+
+    <div class="form-group">
+        </label>First Name: </label>
+        <input class="form-control" th:field="*{fname}" />
+        <br>
+        <label th:for="fname" th:if="${#fields.hasErrors('fname')}" th:errors="*{fname}" required="required"
+               class="btn btn-danger">
+        </label>
+
+    </div>
+    <br>
+    <div class="form-group">
+        <label th:for="lname">Last Name: </label>
+        <input class="form-control" th:field="*{lname}" />
+        <br>
+        <label th:for="lname" th:if="${#fields.hasErrors('lname')}" th:errors="*{lname}" required="required"
+               class="btn btn-danger">
+        </label>
+
+    </div>
+    <br>
+    <div class="form-group">
+        <label th:for="email">Email Address: </label>
+        <input class="form-control" th:field="*{email}" />
+        <br>
+        <label th:for="email" th:if="${#fields.hasErrors('email')}" th:errors="*{email}" required="required"
+               class="btn btn-danger">
+        </label>
+
+    </div>
+
+    <div class="form-group">
+        <label th:for="phoneNumber">Phone Number: </label>
+        <input class="form-control" th:field="*{phoneNumber}" />
+        <br>
+        <label th:for="phoneNumber" th:if="${#fields.hasErrors('email')}" th:errors="*{phoneNumber}" required="required"
+               class="btn btn-danger">
+        </label>
+
+    </div>
+    <br>
+    <div>
+        <label th:for="dob">Date of Birth: </label>
+        <input type="date"  th:field="*{dob}" th:value="${user.dob}" />
+
+    </div>
+    <br>
+    <div class="form-group">
+        <label th:for="uname">User Name: </label>
+        <input class="form-control" th:field="*{uname}" />
+        <br>
+        <label th:for="uname" th:if="${#fields.hasErrors('uname')}" th:errors="*{uname}" required="required"
+               class="alert alert-danger">
+        </label>
+    </div>
+    <br>
+    <div class="form-group">
+        <label th:for="pword">Password: </label>
+        <input th:type="password" class="form-control" th:field="*{pword}" />
+        <br>
+        <label th:for="pword" th:if="${#fields.hasErrors('pword')}" th:errors="*{pword}" required="required"
+               class="btn btn-danger">
+        </label>
+    </div>
+
+    <input type="submit" value="Register" />
+
+    <script type="text/javascript">
+        function checkDOB() {
+            var dateString = document.getElementById('dob').value;
+            var myDate = new Date(dateString);
+            var today = new Date();
+            if ( myDate > today ) {
+                $('#id_dateOfBirth').after('<p>You cannot enter a date in the future!.</p>');
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+</form>
+</centre>
+</body>
+</html>
